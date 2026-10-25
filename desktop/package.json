@@ -1,0 +1,87 @@
+{
+  "name": "eidolon-assistant-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Eidolon Assistant — a character-driven voice front-end for DeepSeek Harness",
+  "main": "dist/main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n vite,main,app -c cyan,magenta,yellow \"vite --port 5273 --strictPort\" \"node scripts/build-main.mjs --watch\" \"wait-on tcp:5273 dist/main.cjs && EIDOLON_DEV_SERVER_URL=http://localhost:5273 electron .\"",
+    "build:main": "node scripts/build-main.mjs",
+    "build:renderer": "vite build",
+    "build": "npm run build:main && npm run build:renderer",
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "concurrently": "^9.2.1",
+    "electron": "44.3.0",
+    "electron-builder": "^26.18.0",
+    "esbuild": "^0.25.10",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.10",
+    "wait-on": "^9.0.1"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "build": {
+    "appId": "ai.eidolon.assistant",
+    "productName": "Eidolon Assistant",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "backend",
+        "filter": [
+          "**/*",
+          "!**/__pycache__/**",
+          "!**/*.pyc"
+        ]
+      },
+      {
+        "from": "../.venv",
+        "to": "venv"
+      },
+      {
+        "from": "../config",
+        "to": "config-default",
+        "filter": [
+          "**/*",
+          "!local.env",
+          "!local.toml"
+        ]
+      },
+      {
+        "from": "../models",
+        "to": "models"
+      },
+      {
+        "from": "assets",
+        "to": "assets"
+      }
+    ],
+    "mac": {
+      "target": [
+        "dir"
+      ],
+      "category": "public.app-category.productivity",
+      "identity": null,
+      "icon": "assets/icon.icns"
+    },
+    "asar": true
+  },
+  "author": {
+    "name": "Eidolon Assistant"
+  }
+}

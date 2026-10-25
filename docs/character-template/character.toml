@@ -1,0 +1,16 @@
+# 角色包元数据。id 用小写英文/数字/连字符；文件名固定为 character.toml。
+id = "example"
+name = "オリジナル名"
+name_zh = "中文名"
+name_romaji = "Romaji Name"
+description = "一句话介绍这个角色。"
+color = "#d4a24c"
+# Fish Audio 的 reference id；没有就留空（角色能对话，但不会有语音）。
+voice_id = ""
+sheet = "sheet.md"
+# 本地唤醒词必须是中文汉字（KWS 用拼音），每个 1–8 字，建议 1–3 个。
+wake_words = ["示例", "示例名字"]
+# 唤醒回应：TTS 文本（日语或中文）与中文字幕。
+wake_reply_tts = "……はい。"
+wake_reply_zh = "我在。"
+tts_language = "ja"

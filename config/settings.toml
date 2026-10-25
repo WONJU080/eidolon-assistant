@@ -1,0 +1,81 @@
+[app]
+name = "Eidolon Assistant"
+character = "ramlethal"
+
+[server]
+host = "127.0.0.1"
+port = 8765
+
+[paths]
+# Empty means ~/Library/Application Support/EidolonAssistant
+data_dir = ""
+workspace_dir = ""
+
+[harness]
+# Bundled DeepSeek Harness CLI (never install into the app bundle; only executed).
+command = "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
+profile = "acp"
+# read-only         -> writes and shell escalation ask the user (recommended)
+# danger-full-access -> everything auto-approved; UI must show a persistent warning
+permission_mode = "read-only"
+startup_timeout_s = 90
+prompt_timeout_s = 900
+cancel_grace_s = 8
+close_timeout_s = 20
+
+[llm]
+base_url = "https://api.deepseek.com/v1"
+model = "deepseek-chat"
+api_key_env = "CHAT_LLM_API_KEY"
+temperature = 0.7
+timeout_s = 60
+max_tokens = 900
+
+[stt]
+provider = "dashscope"
+model = "qwen-audio-3.1-asr-flash-streaming"
+api_key_env = "DASHSCOPE_API_KEY"
+region = "beijing"
+language_hints = ["zh", "ja"]
+timeout_s = 30
+
+[tts]
+provider = "fish"
+base_url = "https://api.fish.audio"
+model = "drama-3"
+api_key_env = "FISH_AUDIO_API_KEY"
+format = "mp3"
+latency = "normal"
+speed = 1.0
+timeout_s = 60
+
+[audio]
+input_device = ""
+output_device = ""
+sample_rate = 16000
+block_ms = 100
+wake_pause_after_tts_ms = 600
+
+[wake]
+enabled = true
+threshold = 0.25
+score = 1.5
+threads = 1
+# Extra keywords listened for while the assistant is busy.
+interrupt_words = ["停", "取消", "中断"]
+confirm_words = ["可以", "允许", "继续", "好的", "不要", "不行", "拒绝"]
+
+[recording]
+vad_threshold = 0.012
+silence_ms = 2000
+min_speech_ms = 250
+max_utterance_s = 15
+start_timeout_s = 8
+
+[permissions]
+timeout_s = 120
+speak_question = true
+
+[limits]
+max_prompt_chars = 4000
+max_event_text = 4000

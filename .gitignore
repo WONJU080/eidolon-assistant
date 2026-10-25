@@ -1,0 +1,25 @@
+# secrets and local state
+config/local.env
+config/local.toml
+var/
+models/
+.venv/
+node_modules/
+dist/
+p0/out/
+p0/workdir/
+*.log
+.DS_Store
+release/
+release-*/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# generated default character: created by scripts/setup.sh from characters/*.eidolon
+config/characters/*
+!config/characters/.gitkeep
+
+# Python packaging metadata
+*.egg-info/

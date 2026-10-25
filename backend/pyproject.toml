@@ -1,0 +1,28 @@
+[project]
+name = "eidolon-assistant"
+version = "0.1.0"
+description = "Character-driven voice front-end for DeepSeek Harness (ACP)"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115",
+  "python-multipart>=0.0.9",
+  "uvicorn[standard]>=0.30",
+  "httpx>=0.27",
+  "python-dotenv>=1.0",
+  "pypinyin>=0.53",
+  "websockets>=15",
+  "sherpa-onnx>=1.12",
+  "sounddevice>=0.5",
+  "numpy>=1.26",
+]
+
+[project.scripts]
+eidolon-assistant = "eidolon_assistant.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["eidolon_assistant*"]
