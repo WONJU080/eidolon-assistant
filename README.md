@@ -1,5 +1,7 @@
 **本项目创意来自：** [Sallyn0225/eidolon-sc](https://github.com/Sallyn0225/eidolon-sc.git)
 
+本项目演示视频： https://www.bilibili.com/video/BV1FQnD6AEgE/
+
 # Eidolon Assistant
 
 一个 macOS 语音角色助手：**你说话，角色回应；需要操作电脑时，交给本机 DeepSeek Harness 执行。**
